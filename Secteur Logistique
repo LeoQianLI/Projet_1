@@ -74,3 +74,25 @@ GROUP BY orderNumber, orderDate, shippedDate, `status`,  comments, delais;
 -- WHERE orderDate BETWEEN 2024-01-01 AND 2024-03-01;
 SELECT * from orders;
 
+-------------------------------------------------------------------------------------------------------
+### CA par office par pays
+
+WITH country_employee AS (
+	SELECT lastname, firstname,officeCode, jobtitle, city, country, employeeNumber
+    FROM employees
+    INNER JOIN offices USING (officecode)
+),
+	ca_2023 AS (
+	SELECT customerName, city, country,salesRepEmployeeNumber, sum(quantityOrdered*priceEach) AS ca
+	FROM customers
+	JOIN orders USING(customerNumber)
+	JOIN orderdetails USING(orderNumber)
+	GROUP BY  customerName, city, country,salesRepEmployeeNumber
+	ORDER BY customerName
+)
+
+SELECT country_employee.lastname, country_employee.firstname, country_employee.officeCode, country_employee.jobtitle, country_employee.city, country_employee.country, 
+ ca_2023.ca
+FROM country_employee
+INNER JOIN ca_2023 ON country_employee.employeeNumber=ca_2023.salesRepEmployeeNumber
+ORDER BY ca DESC, country_employee.country;
