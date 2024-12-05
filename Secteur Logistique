@@ -1,5 +1,5 @@
--- comparer le ratio de stock 2023/2024
--- stock 2023= stock 2024 + vente 2023
+### comparer le ratio de stock 2023/2024
+### stock 2023= stock 2024 + vente 2023
 select date(now()) - interval 1 year;
 USE toys_and_models;
 WITH stock2023 AS (
@@ -42,6 +42,34 @@ SELECT SUM(quantityInStock * buyPrice) AS stock
 FROM products;
 
 SELECT sum(quantityInstock) FROM products;
+
+-------------------------------------------------------------------------------------
+### Taux de livraison :
+
+WITH no_shipped AS (
+	SELECT COUNT(*)
+    FROM orders 
+    WHERE `status` != 'Shipped'  
+    ),
+  	shipped AS (
+    SELECT SUM(shippedDate) 
+    FROM orders 
+    WHERE `status` = 'Shipped'
+    ) 
+
+SELECT orderNumber, 
+	   orderDate,
+       requiredDate, 
+       shippedDate,
+       `status`,  
+       comments, 
+       shippedDate-requiredDate AS delais, 
+       sum(quantityOrdered*priceEach)
+FROM orders
+JOIN orderdetails USING (orderNumber)
+WHERE `status` != 'Shipped'  
+GROUP BY orderNumber, orderDate, shippedDate, `status`,  comments, delais;	
+
 
 -- WHERE orderDate BETWEEN 2024-01-01 AND 2024-03-01;
 SELECT * from orders;
