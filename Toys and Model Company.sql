@@ -1,4 +1,3 @@
-
 -- comparer le ratio de stock 2023/2024
 -- stock 2023= stock 2024 + vente 2023
 select date(now()) - interval 1 year;
