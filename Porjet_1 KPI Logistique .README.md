@@ -2,6 +2,7 @@
 ## KPI Logistique
 
 1.Taux de livraison :
+![image](https://github.com/user-attachments/assets/bbd7c646-dd04-4ad4-a62a-26f066fa980c)
 
 WITH no_shipped AS (
 	SELECT COUNT(*)
@@ -32,6 +33,7 @@ GROUP BY orderNumber, orderDate,
 ![图片1](https://github.com/user-attachments/assets/8fff99a3-601e-4939-a18b-5ced1ffcb4ea)
 
 2. Le ratio du stock 2023
+![image](https://github.com/user-attachments/assets/fa948989-224b-47c9-b0da-d385e378a485)
 
 WITH stock2023 AS (
 SELECT  productName,
@@ -81,6 +83,7 @@ le CA du 2023
 Donc le stock de le coût du stock actuel est 3053685.28 euros qui est représenté 31% de CA du 2023.
 
 3.CA par office par pays
+![image](https://github.com/user-attachments/assets/463de90f-bdf3-4c0e-8bda-0b704d16b375)
 
 WITH country_employee AS (
 	SELECT lastname, firstname,officeCode, jobtitle, city, country, employeeNumber
