@@ -1,4 +1,9 @@
-# Projet_1
+# Projet_1 SQL & BI - Toys🪀 & Models🧸
+
+Nous avons réalisé ce projet pour permettre à la direction de suivre les performances de l’entreprise dans quatre domaines clés : ventes, finances, logistique et ressources humaines. Les principaux KPI incluent l’analyse du chiffre d’affaires (par employé, région et produit), les marges brutes, les tendances des ventes, la fidélité des clients, la gestion des stocks, les délais de livraison et le recouvrement des créances. En cas d’impossibilité technique pour certains indicateurs, des alternatives créatives et adaptées aux besoins métiers ont été proposées
+
+Des codes et captures d’écran détaillant chaque étape du projet sont également inclus.
+
 ## KPI Logistique
 
 1.Taux de livraison :
